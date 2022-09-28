@@ -1,0 +1,38 @@
+---
+apiVersion: souce.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: kubevirt-repo
+  namespace: kubevirt
+spec:
+  interval: 1m
+  url: https://github.com/defenseunicorns/zarf-pkg-vultron-demo.git
+  ref:
+    branch: kubevirt-cdi-bb
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: kubevirt
+  namespace: kubevirt
+spec:
+  interval: 5m
+  path: "./kustomizations/kubevirt"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: kubevirt-repo
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      namespace: softwarefactoryaddons
+      name: redis
+  timeout: 5m
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
+  postBuild:
+    substitute:
+      ZARF_REGISTRY: "###ZARF_REGISTRY###"
+      ZARF_REGISTRY_AUTH_PULL: "###ZARF_REGISTRY_AUTH_PULL###"

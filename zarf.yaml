@@ -72,25 +72,28 @@ components:
     description: "KubeVirt"
     required: true
     repos:
-     - https://repo1.dso.mil/platform-one/big-bang/apps/third-party/kubevirt.git@0.55.0-bb.0
+      - https://github.com/defenseunicorns/hncd-demo-zarf-package.git
+      - https://repo1.dso.mil/platform-one/big-bang/apps/third-party/kubevirt.git@0.55.0-bb.0
     images:
       - registry.dso.mil/platform-one/big-bang/apps/third-party/kubevirt/virt-api:v0.54.0
       - registry.dso.mil/platform-one/big-bang/apps/third-party/kubevirt/virt-controller:v0.54.0
       - registry.dso.mil/platform-one/big-bang/apps/third-party/kubevirt/virt-launcher:v0.54.0
       - registry.dso.mil/platform-one/big-bang/apps/third-party/kubevirt/virt-handler:v0.54.0
       - registry.dso.mil/platform-one/big-bang/apps/third-party/kubevirt/virt-operator:v0.54.0
-    charts:
+    # charts:
+    #   - name: kubevirt
+    #     url: https://repo1.dso.mil/platform-one/big-bang/apps/third-party/kubevirt.git
+    #     version: 0.55.0-bb.0
+    #     gitPath: chart
+    #     namespace: kubevirt
+    manifests:
       - name: kubevirt
-        url: https://repo1.dso.mil/platform-one/big-bang/apps/third-party/kubevirt.git
-        version: 0.55.0-bb.0
-        gitPath: chart
-        namespace: kubevirt
-        # valuesFiles:
-        #   - chart/values.yaml
+        files:
+          - "manifests/kubevirt.yaml"
 
   - name: cdi
     description: "CDI for KubeVirt"
-    required: true
+    required: false
     repos:
       - https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/cdi.git@1.53.0-bb.0
     images:
