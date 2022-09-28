@@ -1,0 +1,7 @@
+domain: bigbang.dev
+
+registryCredentials:
+  registry: "###ZARF_REGISTRY###"
+  username: "zarf-pull"
+  password: "###ZARF_REGISTRY_AUTH_PULL###"
+

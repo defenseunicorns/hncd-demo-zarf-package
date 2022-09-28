@@ -1,0 +1,111 @@
+kind: ZarfPackageConfig
+metadata:
+  name: hncd-bigbang
+  description: "Deploy Big Bang + Harness"
+  # Big Bang / Iron Bank are only amd64
+  architecture: amd64
+
+components:
+  - name: flux
+    required: true
+    manifests:
+      - name: flux-installer
+        kustomizations:
+          - https://repo1.dso.mil/platform-one/big-bang/bigbang.git//base/flux?ref=1.36.0
+    images:
+      - registry1.dso.mil/ironbank/fluxcd/helm-controller:v0.21.0
+      - registry1.dso.mil/ironbank/fluxcd/kustomize-controller:v0.25.0
+      - registry1.dso.mil/ironbank/fluxcd/notification-controller:v0.23.5
+      - registry1.dso.mil/ironbank/fluxcd/source-controller:v0.24.4
+
+  - name: bigbang
+    description: "Git repositories and OCI images used by Big Bang Core"
+    required: true
+    repos:
+      - https://repo1.dso.mil/platform-one/big-bang/bigbang.git@1.36.0
+      - https://repo1.dso.mil/platform-one/big-bang/apps/core/istio-operator.git@1.13.2-bb.1
+      - https://repo1.dso.mil/platform-one/big-bang/apps/core/istio-controlplane.git@1.13.2-bb.1
+      - https://repo1.dso.mil/platform-one/big-bang/apps/core/monitoring.git@35.2.0-bb.3
+      - https://repo1.dso.mil/platform-one/big-bang/apps/core/elasticsearch-kibana.git@0.7.1-bb.0
+      - https://repo1.dso.mil/platform-one/big-bang/apps/core/eck-operator.git@2.0.0-bb.2
+      - https://repo1.dso.mil/platform-one/big-bang/apps/core/fluentbit.git@0.20.0-bb.1
+      - https://repo1.dso.mil/platform-one/big-bang/apps/core/jaeger.git@2.30.0-bb.2
+      - https://repo1.dso.mil/platform-one/big-bang/apps/core/kiali.git@1.51.0-bb.0
+      - https://repo1.dso.mil/platform-one/big-bang/apps/core/cluster-auditor.git@1.4.0-bb.4
+    images:
+      - registry1.dso.mil/ironbank/big-bang/grafana/grafana-plugins:8.6.2
+      - registry1.dso.mil/ironbank/bigbang/cluster-auditor/opa-exporter:v0.0.4
+      - registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator:2.0.0
+      - registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch:7.17.1
+      - registry1.dso.mil/ironbank/elastic/kibana/kibana:7.17.1
+      - registry1.dso.mil/ironbank/kiwigrid/k8s-sidecar:1.18.0
+      - registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:1.9.3
+      - registry1.dso.mil/ironbank/opensource/istio/operator:1.13.2
+      - registry1.dso.mil/ironbank/opensource/jaegertracing/all-in-one:1.33.0
+      - registry1.dso.mil/ironbank/opensource/jaegertracing/jaeger-collector:1.33.0
+      - registry1.dso.mil/ironbank/opensource/jaegertracing/jaeger-operator:1.33.0
+      - registry1.dso.mil/ironbank/opensource/jaegertracing/jaeger-query:1.33.0
+      - registry1.dso.mil/ironbank/opensource/kiali/kiali-operator:v1.51.0
+      - registry1.dso.mil/ironbank/opensource/kubernetes/kube-state-metrics:v2.4.2
+      - registry1.dso.mil/ironbank/opensource/prometheus-operator/prometheus-operator:v0.56.2
+      - registry1.dso.mil/ironbank/opensource/prometheus/alertmanager:v0.24.0
+      - registry1.dso.mil/ironbank/opensource/prometheus/node-exporter:v1.3.1
+      - registry1.dso.mil/ironbank/opensource/prometheus/prometheus:v2.35.0
+      # not found by zarf prepare find-images
+      - registry1.dso.mil/ironbank/opensource/istio/install-cni:1.13.2
+      - registry1.dso.mil/ironbank/big-bang/base:1.0.0
+      - registry1.dso.mil/ironbank/opensource/istio/pilot:1.13.2
+      - registry1.dso.mil/ironbank/opensource/istio/proxyv2:1.13.2
+      - registry1.dso.mil/ironbank/opensource/ingress-nginx/kube-webhook-certgen:v1.1.1
+      - registry1.dso.mil/ironbank/big-bang/base:1.17.0
+      - registry1.dso.mil/ironbank/opensource/prometheus/alertmanager:v0.24.0
+      - registry1.dso.mil/ironbank/opensource/prometheus-operator/prometheus-config-reloader:v0.56.2
+      - registry1.dso.mil/ironbank/opensource/kiali/kiali:v1.51.0
+      # Klipper image required by K3s
+      - docker.io/rancher/klipper-lb:v0.3.5
+    manifests:
+      - name: big-bang-config
+        kustomizations:
+          - "kustomization/bigbang"
+
+  - name: kubevirt
+    description: "KubeVirt"
+    required: true
+    repos:
+     - https://repo1.dso.mil/platform-one/big-bang/apps/third-party/kubevirt.git@0.55.0-bb.0
+    images:
+      - registry.dso.mil/platform-one/big-bang/apps/third-party/kubevirt/virt-api:v0.54.0
+      - registry.dso.mil/platform-one/big-bang/apps/third-party/kubevirt/virt-controller:v0.54.0
+      - registry.dso.mil/platform-one/big-bang/apps/third-party/kubevirt/virt-launcher:v0.54.0
+      - registry.dso.mil/platform-one/big-bang/apps/third-party/kubevirt/virt-handler:v0.54.0
+      - registry.dso.mil/platform-one/big-bang/apps/third-party/kubevirt/virt-operator:v0.54.0
+    charts:
+      - name: kubevirt
+        url: https://repo1.dso.mil/platform-one/big-bang/apps/third-party/kubevirt.git
+        version: 0.55.0-bb.0
+        gitPath: chart
+        namespace: kubevirt
+        # valuesFiles:
+        #   - chart/values.yaml
+
+  - name: cdi
+    description: "CDI for KubeVirt"
+    required: true
+    repos:
+      - https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/cdi.git@1.53.0-bb.0
+    images:
+      - registry.dso.mil/platform-one/big-bang/apps/sandbox/cdi/cdi-operator:v1.52.0
+      - registry.dso.mil/platform-one/big-bang/apps/sandbox/cdi/cdi-controller:v1.52.0
+      - registry.dso.mil/platform-one/big-bang/apps/sandbox/cdi/cdi-importer:v1.52.0
+      - registry.dso.mil/platform-one/big-bang/apps/sandbox/cdi/cdi-cloner:v1.52.0
+      - registry.dso.mil/platform-one/big-bang/apps/sandbox/cdi/cdi-apiserver:v1.52.0
+      - registry.dso.mil/platform-one/big-bang/apps/sandbox/cdi/cdi-uploadserver:v1.52.0
+      - registry.dso.mil/platform-one/big-bang/apps/sandbox/cdi/cdi-uploadproxy:v1.52.0
+    charts:
+      - name: cdi
+        url: https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/cdi.git
+        version: 1.53.0-bb.0
+        gitPath: chart
+        namespace: cdi
+        # valuesFiles:
+        #   - chart/values.yaml

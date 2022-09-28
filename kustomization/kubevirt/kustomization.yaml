@@ -1,0 +1,10 @@
+resources:
+    - git::https://repo1.dso.mil/platform-one/big-bang/apps/third-party/harness.git?ref=tags/0.1.0-bb.10
+
+configMapGenerator:
+  - name: common
+    namespace: bigbang
+    behavior: merge
+    files:
+      - values.yaml
+
