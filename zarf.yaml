@@ -99,7 +99,7 @@ components:
     manifests:
       - name: big-bang-config
         kustomizations:
-          - "kustomization/core-standard"
+          - "kustomization/bigbang"
 
   - name: kubevirt
     description: "KubeVirt"
