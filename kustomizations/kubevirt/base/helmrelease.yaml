@@ -28,3 +28,6 @@ spec:
   rollback:
     timeout: 30m
     cleanupOnFail: false
+dependsOn:
+  - name: istio
+    namespace: istio-system
