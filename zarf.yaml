@@ -1,7 +1,7 @@
 kind: ZarfPackageConfig
 metadata:
   name: hncd-bigbang
-  description: "Deploy Big Bang + Harness"
+  description: "Deploy Big Bang + KubeVirt"
   # Big Bang / Iron Bank are only amd64
   architecture: amd64
 
