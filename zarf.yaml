@@ -87,8 +87,6 @@ components:
   - name: big-bang-core-standard
     description: "Deploy Big Bang Core with a standard configuration"
     group: big-bang-variant
-    repos:
-      - https://github.com/defenseunicorns/hncd-demo-zarf-package.git
     manifests:
       - name: big-bang-config
         kustomizations:
