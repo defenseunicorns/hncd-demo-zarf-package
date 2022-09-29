@@ -93,11 +93,20 @@ components:
         kustomizations:
          - "kustomization/bigbang"
 
+  - name: setup
+    description: "Required setup for the HNCD Zarf Demo project"
+    required: true
+    repos: 
+      - https://github.com/defenseunicorns/hncd-demo-zarf-package.git
+    manifests:
+      - name: setup
+        files:
+          - manifests/setup.yaml
+
   - name: kubevirt
     description: "KubeVirt"
     required: true
     repos:
-      - https://github.com/defenseunicorns/hncd-demo-zarf-package.git
       - https://repo1.dso.mil/platform-one/big-bang/apps/third-party/kubevirt.git@0.55.0-bb.0
     images:
       - registry.dso.mil/platform-one/big-bang/apps/third-party/kubevirt/virt-api:v0.55.0
@@ -123,11 +132,7 @@ components:
       - registry.dso.mil/platform-one/big-bang/apps/sandbox/cdi/cdi-apiserver:v1.53.0
       - registry.dso.mil/platform-one/big-bang/apps/sandbox/cdi/cdi-uploadserver:v1.53.0
       - registry.dso.mil/platform-one/big-bang/apps/sandbox/cdi/cdi-uploadproxy:v1.53.0
-    charts:
+    manifests:
       - name: cdi
-        url: https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/cdi.git
-        version: 1.53.0-bb.0
-        gitPath: chart
-        namespace: cdi
-        # valuesFiles:
-        #   - chart/values.yaml
+        files:
+          - manifests/cdi.yaml
