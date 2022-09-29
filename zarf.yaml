@@ -91,7 +91,7 @@ components:
     manifests:
       - name: big-bang-config
         kustomizations:
-         - "kustomization/bigbang"
+         - "kustomizations/bigbang"
 
   - name: setup
     description: "Required setup for the HNCD Zarf Demo project"
