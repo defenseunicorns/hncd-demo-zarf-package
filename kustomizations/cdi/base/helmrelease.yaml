@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       interval: 1m
-      chart: chart
+      chart: ./chart
       sourceRef:
         kind: GitRepository
         name: cdi
