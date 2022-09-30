@@ -4,14 +4,14 @@ kind: Namespace
 metadata:
   name: kubevirt
   labels:
-    istio-injection: enabled
+    istio-injection: disabled
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: cdi
   labels:
-    istio-injection: enabled
+    istio-injection: disabled
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
