@@ -9,7 +9,7 @@ git:
   existingSecret: "private-git-server"
 
 networkPolicies:
-  enabled: true
+  enabled: false
   # When in prod use a real CIDR. Don't do this, it isn't secure. This is done here since it is a demo and the CIDR changes based on which Linux distro you are running on.
   controlPlaneCidr: "0.0.0.0/0"
   nodeCidr: "0.0.0.0/0"
@@ -150,45 +150,6 @@ istio:
           -----END CERTIFICATE-----
 gatekeeper:
   enabled: false
-  # values:
-  #   violations:
-  #     allowedDockerRegistries:
-  #       match:
-  #         # Make Kind/K3d happy
-  #         excludedNamespaces:
-  #           - "kube-sytem"
-  #           - "istio-system"
-  #           - "local-path-storage"
-  #       parameters:
-  #         repos:
-  #           - "###ZARF_REGISTRY###"
-  #         excludedResources:
-  #           # K3s needs this if you are doing K3s-specific "HelmRelease"-type CRDs
-  #           - ".*/helm-install-.*"
-  #           - ".*/helm"
-  #     allowedHostFilesystem:
-  #       match:
-  #         # Make Kind/K3d happy
-  #         excludedNamespaces:
-  #           - "kube-sytem"
-  #           - "local-path-storage"
-  #     hostNetworking:
-  #       match:
-  #         excludedNamespaces:
-  #           - "kube-sytem"
-  #           - "istio-system"
-  #     restrictedTaint:
-  #       match:
-  #         # Make Kind/K3d happy
-  #         excludedNamespaces:
-  #           - "kube-sytem"
-  #           - "local-path-storage"
-  #     volumeTypes:
-  #       match:
-  #         # Make Kind/K3d happy
-  #         excludedNamespaces:
-  #           - "kube-sytem"
-  #           - "local-path-storage"
 
 # EFK -> PLG, see https://repo1.dso.mil/platform-one/big-bang/bigbang/-/blob/1.39.0/docs/guides/using-bigbang/efk-plg-logging-migration.md
 logging:
