@@ -138,7 +138,7 @@ components:
 
   - name: metallb
     description: "Load balancer for balancing loads"
-    required: true
+    required: false
     charts:
       - name: metallb
         releaseName: metallb
