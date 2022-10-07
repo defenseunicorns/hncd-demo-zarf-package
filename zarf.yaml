@@ -95,7 +95,7 @@ components:
   - name: setup
     description: "Required setup for the HNCD Zarf Demo project"
     required: true
-    repos: 
+    repos:
       - https://github.com/defenseunicorns/hncd-demo-zarf-package.git
     manifests:
       - name: setup
@@ -135,3 +135,15 @@ components:
       - name: cdi
         files:
           - manifests/cdi.yaml
+
+  - name: metallb
+    description: "Load balancer for balancing loads"
+    required: true
+    charts:
+      - name: metallb/metallb
+        releaseName: metallb
+        namespace: metallb
+        url: https://metallb.github.io/metallb
+        version: "0.13.5"
+        valuesFiles:
+          - manifests/metallb.yaml
