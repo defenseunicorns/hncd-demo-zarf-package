@@ -140,7 +140,7 @@ components:
     description: "Load balancer for balancing loads"
     required: true
     charts:
-      - name: metallb/metallb
+      - name: metallb
         releaseName: metallb
         namespace: metallb
         url: https://metallb.github.io/metallb
