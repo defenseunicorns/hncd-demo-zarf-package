@@ -89,8 +89,8 @@ components:
     required: true
     manifests:
       - name: big-bang-config
-        kustomizations:
-         - "kustomizations/bigbang"
+        files:
+          - manifests/bigbang.yaml
 
   - name: setup
     description: "Required setup for the HNCD Zarf Demo project"
