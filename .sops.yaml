@@ -1,0 +1,5 @@
+
+creation_rules:
+  - encrypted_regex: '^(data|stringData)$'
+    path_regex: kustomizations/bigbang
+    kms: 'arn:aws:kms:us-east-1:765814079306:key/3c818575-1d48-42e2-863e-61aae2cd8bd1'
