@@ -12,6 +12,6 @@ spec:
   http:
     - route:
         - destination:
-            host: msr.msr.svc.cluster.local
+            host: cdi-uploadproxy.cdi.svc.cluster.local
             port:
               number: 8180
