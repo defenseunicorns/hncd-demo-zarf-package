@@ -89,6 +89,7 @@ components:
     required: true
     manifests:
       - name: big-bang-config
+        namespace: bigbang
         files:
           - manifests/bigbang.yaml
 

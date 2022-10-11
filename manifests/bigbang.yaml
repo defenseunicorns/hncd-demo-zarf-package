@@ -25,3 +25,4 @@ spec:
     substitute:
       ZARF_REGISTRY: "###ZARF_REGISTRY###"
       ZARF_REGISTRY_AUTH_PULL: "###ZARF_REGISTRY_AUTH_PULL###"
+      DOMAIN: "###ZARF_VAR_DOMAIN###"
