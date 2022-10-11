@@ -6,7 +6,7 @@ metadata:
   namespace: cdi
 spec:
   hosts:
-    - cdi.bigbang.dev
+    - "cdi.${DOMAIN}"
   gateways:
     - istio-system/public
   http:

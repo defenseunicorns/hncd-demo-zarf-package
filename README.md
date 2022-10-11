@@ -13,7 +13,8 @@ This repo is intended to serve as a demo for a basic HNCD zarf package.
   * 'n' to PLG
   * 'y' to Gitea
 > TODO - replace this block^ with a zarf init command that doesn't require additional input
-* Configure SOPS credentials
+* Create the `flux-system` namespace with `kubectl create ns flux-system`
+* Configure SOPS credentials for flux
   * ```
     cat << EOF | kubectl apply -n flux-system -f -
     apiVersion: v1
@@ -27,7 +28,6 @@ This repo is intended to serve as a demo for a basic HNCD zarf package.
         aws_secret_access_key: <key_secret>
     EOF
     ```
-    > NOTE - this has to happen AFTER the `zarf init`, where flux is installed
 * Navigate to the source repo
 * Build the zarf package with `zarf package create`
 * Deploy the zarf package with `zarf package deploy zarf-package-hncd-bigbang-amd64.tar.zst`
