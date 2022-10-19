@@ -6,12 +6,12 @@ metadata:
   namespace: cdi
 spec:
   hosts:
-    - cdi.bigbang.dev
+    - "cdi.${DOMAIN}"
   gateways:
     - istio-system/public
   http:
     - route:
         - destination:
-            host: msr.msr.svc.cluster.local
+            host: cdi-uploadproxy.cdi.svc.cluster.local
             port:
               number: 8180
