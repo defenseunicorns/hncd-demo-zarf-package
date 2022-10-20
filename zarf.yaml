@@ -151,3 +151,15 @@ components:
     images:
       - quay.io/metallb/speaker:v0.13.5
       - quay.io/metallb/controller:v0.13.5
+
+  - name: arkime3-viewer
+    description: "Arkime 3 Viewer"
+    required: false
+    repos:
+      - http://gitlab.valkyrie.lan/voltron/arkime3-viewer
+    images:
+      - 10.1.25.34/voltron/arkime3:latest
+    manifests:
+      - name: arkime3-viewer
+        files:
+          - manifests/arkime3-viewer.yaml
