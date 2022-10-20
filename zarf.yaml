@@ -8,7 +8,7 @@ metadata:
 variables:
   # Prompt user for the domain override
   - name: DOMAIN
-    default: "voltron.bigbang.dev"
+    default: "vplus.bigbang.dev"
     prompt: false
 
 components:
