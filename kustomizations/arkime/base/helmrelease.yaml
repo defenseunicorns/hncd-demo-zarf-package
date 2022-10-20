@@ -33,3 +33,5 @@ spec:
       namespace: bigbang
     - name: logging
       namespace: bigbang
+  values:
+

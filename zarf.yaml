@@ -169,7 +169,7 @@ components:
     description: "Arkime packet capture / indexing util"
     required: false
     repos:
-      - http://gitlab.valkyrie.lan/voltron/arkime3-viewer.git@144973576d87c92a0d8cabbee7d4fcdcbd3c98bf
+      - http://gitlab.valkyrie.lan/voltron/arkime3-viewer.git
     images:
       - harbor.valkyrie.lan/voltron/arkime3
     manifests:
