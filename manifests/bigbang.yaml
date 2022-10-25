@@ -17,10 +17,10 @@ spec:
       namespace: bigbang
       name: bigbang
   timeout: 5m
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-creds
+  # decryption:
+  #   provider: sops
+  #   secretRef:
+  #     name: sops-creds
   postBuild:
     substitute:
       ZARF_REGISTRY: "###ZARF_REGISTRY###"
