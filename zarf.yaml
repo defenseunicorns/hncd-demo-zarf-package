@@ -91,7 +91,7 @@ components:
       - name: big-bang-config
         namespace: bigbang
         files:
-          - manifests/bigbang.yaml
+          - kustomizations/bigbang
 
   - name: setup
     description: "Required setup for the HNCD Zarf Demo project"
