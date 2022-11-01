@@ -1,0 +1,9 @@
+resources:
+  - gitrepository.yaml
+  - helmrelease.yaml
+
+configMapGenerator:
+  - name: common
+    behavior: create
+    files:
+    - values.yaml=values.yaml

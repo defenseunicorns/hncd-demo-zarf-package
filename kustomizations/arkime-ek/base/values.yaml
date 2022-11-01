@@ -1,0 +1,97 @@
+
+# hostname is deprecated and replaced with domain. But if hostname exists then use it.
+hostname: ${DOMAIN}
+domain: ${DOMAIN}
+
+istio:
+  enabled: true
+  kibana:
+    gateways:
+    - istio-system/public
+
+networkPolicies:
+  enabled: false
+
+kibana:
+  imagePullSecrets:
+    - name: private-registry
+
+monitoring:
+  enabled: false
+
+metrics:
+  enabled: false
+
+elasticsearch:
+  imagePullSecrets:
+    - name: private-registry
+  master:
+    initContainers:
+      - name: elastic-internal-init-filesystem
+        securityContext:
+          privileged: false
+          capabilities:
+            drop:
+              - ALL
+      - name: elastic-internal-suspend
+        securityContext:
+          privileged: false
+          capabilities:
+            drop:
+              - ALL
+  data:
+    initContainers:
+      - name: elastic-internal-init-filesystem
+        securityContext:
+          privileged: false
+          capabilities:
+            drop:
+              - ALL
+      - name: elastic-internal-suspend
+        securityContext:
+          privileged: false
+          capabilities:
+            drop:
+              - ALL
+  ingest:
+    initContainers:
+      - name: elastic-internal-init-filesystem
+        securityContext:
+          privileged: false
+          capabilities:
+            drop:
+              - ALL
+      - name: elastic-internal-suspend
+        securityContext:
+          privileged: false
+          capabilities:
+            drop:
+              - ALL
+  ml:
+    initContainers:
+      - name: elastic-internal-init-filesystem
+        securityContext:
+          privileged: false
+          capabilities:
+            drop:
+              - ALL
+      - name: elastic-internal-suspend
+        securityContext:
+          privileged: false
+          capabilities:
+            drop:
+              - ALL
+  coord:
+    initContainers:
+      - name: elastic-internal-init-filesystem
+        securityContext:
+          privileged: false
+          capabilities:
+            drop:
+              - ALL
+      - name: elastic-internal-suspend
+        securityContext:
+          privileged: false
+          capabilities:
+            drop:
+              - ALL

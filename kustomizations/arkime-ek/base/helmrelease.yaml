@@ -1,0 +1,38 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: arkime-ek
+  namespace: arkime-ek
+spec:
+  targetNamespace: arkime-ek
+  releaseName: arkime-ek
+  interval: 5m
+  timeout: 10m
+  chart:
+    spec:
+      interval: 1m
+      chart: ./chart
+      sourceRef:
+        kind: GitRepository
+        name: arkime-ek
+  test:
+    enable: false
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+    cleanupOnFail: true
+  rollback:
+    timeout: 30m
+    cleanupOnFail: false
+  valuesFrom:
+    - name: arkime-ek-values
+      kind: ConfigMap
+  dependsOn:
+    - name: istio
+      namespace: bigbang
+    - name: eck-operator
+      namespace: bigbang
