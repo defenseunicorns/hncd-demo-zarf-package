@@ -1,7 +1,8 @@
+configurations:
+  - transformer.yaml
 resources:
   - gitrepository.yaml
   - helmrelease.yaml
-  - transformer.yaml
 
 configMapGenerator:
   - name: arkime-ek-values
