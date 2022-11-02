@@ -32,6 +32,12 @@ gatekeeper:
 # EFK -> PLG, see https://repo1.dso.mil/platform-one/big-bang/bigbang/-/blob/1.39.0/docs/guides/using-bigbang/efk-plg-logging-migration.md
 logging:
   enabled: true
+  values:
+    elasticsearch:
+      master:
+        count: 1
+      data:
+        count: 1
 eckoperator:
   enabled: true
 fluentbit:

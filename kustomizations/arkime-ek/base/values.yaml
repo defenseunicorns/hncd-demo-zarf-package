@@ -26,6 +26,7 @@ elasticsearch:
   imagePullSecrets:
     - name: private-registry
   master:
+    count: 1
     initContainers:
       - name: elastic-internal-init-filesystem
         securityContext:
@@ -40,6 +41,7 @@ elasticsearch:
             drop:
               - ALL
   data:
+    count: 1
     initContainers:
       - name: elastic-internal-init-filesystem
         securityContext:
