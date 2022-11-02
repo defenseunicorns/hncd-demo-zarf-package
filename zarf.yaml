@@ -86,7 +86,7 @@ components:
       - registry1.dso.mil/ironbank/opensource/grafana/promtail:v2.5.0
       - registry1.dso.mil/ironbank/opensource/grafana/tempo-query:1.4.1
       - registry1.dso.mil/ironbank/opensource/grafana/tempo:1.4.1
-      - registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator:2.2.0
+      - registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator:2.3.0
       - registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch:7.17.1
       - registry1.dso.mil/ironbank/elastic/kibana/kibana:7.17.1
       - registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:1.9.4
