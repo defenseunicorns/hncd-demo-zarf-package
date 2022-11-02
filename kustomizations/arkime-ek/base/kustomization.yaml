@@ -1,9 +1,10 @@
 resources:
   - gitrepository.yaml
   - helmrelease.yaml
+  - transformer.yaml
 
 configMapGenerator:
-  - name: common
+  - name: arkime-ek-values
     behavior: create
     files:
     - values.yaml=values.yaml
