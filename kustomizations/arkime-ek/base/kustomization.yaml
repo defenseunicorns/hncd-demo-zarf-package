@@ -6,6 +6,7 @@ resources:
 
 configMapGenerator:
   - name: arkime-ek-values
+    namespace: arkime-ek
     behavior: create
     files:
     - values.yaml=values.yaml
