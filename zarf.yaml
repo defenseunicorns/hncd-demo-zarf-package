@@ -75,21 +75,14 @@ components:
     description: "Git repositories and OCI images used by EFK"
     required: true
     repos:
-      - https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/loki.git@3.0.5-bb.4
-      - https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/promtail.git@4.2.0-bb.2
-      - https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/tempo.git@0.15.1-bb.7
-      - https://repo1.dso.mil/platform-one/big-bang/apps/core/elasticsearch-kibana.git@0.7.1-bb.0
-      - https://repo1.dso.mil/platform-one/big-bang/apps/core/eck-operator.git@2.2.0-bb.0
-      - https://repo1.dso.mil/platform-one/big-bang/apps/core/fluentbit.git@0.20.2-bb.0
+      - https://repo1.dso.mil/platform-one/big-bang/apps/core/elasticsearch-kibana.git@0.8.0-bb.1
+      - https://repo1.dso.mil/platform-one/big-bang/apps/core/eck-operator.git@2.3.0-bb.0
+      - https://repo1.dso.mil/platform-one/big-bang/apps/core/fluentbit.git@0.20.3-bb.0
     images:
-      - registry1.dso.mil/ironbank/opensource/grafana/loki:2.5.0
-      - registry1.dso.mil/ironbank/opensource/grafana/promtail:v2.5.0
-      - registry1.dso.mil/ironbank/opensource/grafana/tempo-query:1.4.1
-      - registry1.dso.mil/ironbank/opensource/grafana/tempo:1.4.1
       - registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator:2.3.0
-      - registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch:7.17.1
-      - registry1.dso.mil/ironbank/elastic/kibana/kibana:7.17.1
-      - registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:1.9.4
+      - registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch:8.2.3
+      - registry1.dso.mil/ironbank/elastic/kibana/kibana:8.2.3
+      - registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:1.9.6
 
   - name: big-bang-core-standard
     description: "Deploy Big Bang Core with a standard configuration"
