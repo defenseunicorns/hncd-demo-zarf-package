@@ -10,6 +10,10 @@ variables:
   - name: DOMAIN
     default: "vplus.bigbang.dev"
     prompt: false
+  - name: ES_REPLICAS
+    description: Replica count for ElasticSearch master and data nodes -- should lower to 1 for local deployments
+    default: "3"
+    prompt: true
 
 components:
   - name: flux

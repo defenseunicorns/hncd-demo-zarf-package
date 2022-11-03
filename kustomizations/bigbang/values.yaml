@@ -35,9 +35,9 @@ logging:
   values:
     elasticsearch:
       master:
-        count: 1
+        count: ${ES_REPLICAS}
       data:
-        count: 1
+        count: ${ES_REPLICAS}
 eckoperator:
   enabled: true
 fluentbit:
