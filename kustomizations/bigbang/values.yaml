@@ -38,6 +38,8 @@ logging:
         count: ${ES_REPLICAS}
       data:
         count: ${ES_REPLICAS}
+    kibana:
+      count: 1
 eckoperator:
   enabled: true
 fluentbit:

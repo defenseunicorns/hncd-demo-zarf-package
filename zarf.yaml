@@ -11,7 +11,7 @@ variables:
     default: "vplus.bigbang.dev"
     prompt: false
   - name: ES_REPLICAS
-    description: Replica count for ElasticSearch master and data nodes -- should lower to 1 for local deployments
+    description: Replica count for ElasticSearch master and data nodes -- should lowered to 1 for local deployments
     default: "3"
     prompt: true
 

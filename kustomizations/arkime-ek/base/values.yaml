@@ -7,12 +7,15 @@ istio:
   enabled: true
   kibana:
     gateways:
-    - istio-system/public
+      - istio-system/public
+    hosts:
+      - "arkime-kibana.${DOMAIN}"
 
 networkPolicies:
   enabled: false
 
 kibana:
+  count: 1
   imagePullSecrets:
     - name: private-registry
 
