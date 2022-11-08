@@ -22,4 +22,4 @@ spec:
   interval: 1m
   url: https://github.com/defenseunicorns/hncd-demo-zarf-package.git
   ref:
-    branch: feature/arkime-ek
+    branch: feature/dataplane-ek
