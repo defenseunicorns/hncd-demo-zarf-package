@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: arkime-ek
-  namespace: arkime-ek
+  name: dataplane-ek
+  namespace: dataplane-ek
 spec:
   interval: 5m
-  path: "./kustomizations/arkime-ek"
+  path: "./kustomizations/dataplane-ek"
   prune: true
   sourceRef:
     kind: GitRepository
@@ -15,8 +15,8 @@ spec:
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
-      namespace: arkime-ek
-      name: arkime-ek
+      namespace: dataplane-ek
+      name: dataplane-ek
   timeout: 5m
   postBuild:
     substitute:

@@ -9,7 +9,7 @@ istio:
     gateways:
       - istio-system/public
     hosts:
-      - "arkime-kibana.${DOMAIN}"
+      - "dataplane-kibana.${DOMAIN}"
 
 networkPolicies:
   enabled: false

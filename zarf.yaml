@@ -156,12 +156,12 @@ components:
       - quay.io/metallb/speaker:v0.13.5
       - quay.io/metallb/controller:v0.13.5
 
-  - name: arkime-ek
-    description: "EK Chart Deployment for the DataPlane / Arkime"
+  - name: dataplane-ek
+    description: "EK Chart Deployment for the DataPlane"
     required: false
     repos:
-      - https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/cdi.git@1.53.0-bb.0
+      - https://repo1.dso.mil/platform-one/big-bang/apps/core/elasticsearch-kibana.git@0.8.0-bb.1
     manifests:
-      - name: arkime-ek
+      - name: dataplane-ek
         files:
-          - manifests/arkime-ek.yaml
+          - manifests/dataplane-ek.yaml

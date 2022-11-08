@@ -5,8 +5,8 @@ resources:
   - helmrelease.yaml
 
 configMapGenerator:
-  - name: arkime-ek-values
-    namespace: arkime-ek
+  - name: dataplane-ek-values
+    namespace: dataplane-ek
     behavior: create
     files:
     - values.yaml=values.yaml

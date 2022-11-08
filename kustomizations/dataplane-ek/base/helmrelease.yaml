@@ -1,11 +1,11 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: arkime-ek
-  namespace: arkime-ek
+  name: dataplane-ek
+  namespace: dataplane-ek
 spec:
-  targetNamespace: arkime-ek
-  releaseName: arkime-ek
+  targetNamespace: dataplane-ek
+  releaseName: dataplane-ek
   interval: 5m
   timeout: 10m
   chart:
@@ -14,7 +14,7 @@ spec:
       chart: ./chart
       sourceRef:
         kind: GitRepository
-        name: arkime-ek
+        name: dataplane-ek
   test:
     enable: false
   install:
@@ -29,7 +29,7 @@ spec:
     timeout: 30m
     cleanupOnFail: false
   valuesFrom:
-    - name: arkime-ek-values
+    - name: dataplane-ek-values
       kind: ConfigMap
   dependsOn:
     - name: istio
